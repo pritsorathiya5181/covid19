@@ -1,4 +1,5 @@
 import 'package:covid_19/constant.dart';
+import 'package:covid_19/widgets/info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -39,7 +40,18 @@ class MyHeader extends StatelessWidget {
           children: <Widget>[
             Align(
                 alignment: Alignment.topRight,
-                child: SvgPicture.asset('assets/icons/menu.svg')),
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return InfoScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: SvgPicture.asset('assets/icons/menu.svg'))),
             SizedBox(height: 20.0),
             Expanded(
               child: Stack(
@@ -68,7 +80,6 @@ class MyHeader extends StatelessWidget {
     );
   }
 }
-
 
 class MyClipper extends CustomClipper<Path> {
   @override
